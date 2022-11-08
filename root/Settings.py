@@ -1,0 +1,5 @@
+class Settings:
+    TICK_TIME: int = 300
+    CLOSING_TIME: int = 21600
+    VISITOR_GENERATE_TIME_PERIOD: int = 900
+    VISITOR_WAITING_TIME: int = 3000
