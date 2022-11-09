@@ -15,24 +15,24 @@ from root.Settings import Settings
 
 class CoffeeHouse:
     __visitorGenerator: Optional[VisitorGenerator]
-    __dessertMap: Dict[Product, int]
+    _dessertMap: Dict[Product, int]
     __recipeMap: Dict[Product, Recipe]
     __cashDeskList: List[CashDesk]
     __menuList: List[Product]
     __outgoingVisitorList: List[Visitor]
-    __ingredientMap: Dict[Ingredient, int]
+    _ingredientMap: Dict[Ingredient, int]
     __currentTime: int
     __ratingSum: int
     __ratingAmount: int
 
     def __init__(self):
         self.__visitorGenerator = None
-        self.__dessertMap = dict()
+        self._dessertMap = dict()
         self.__recipeMap = dict()
         self.__cashDeskList = list()
         self.__menuList = list()
         self.__outgoingVisitorList = list()
-        self.__ingredientMap = dict()
+        self._ingredientMap = dict()
         self.__currentTime = 0
         self.__ratingSum = 0
         self.__ratingAmount = 0
@@ -57,7 +57,7 @@ class CoffeeHouse:
             if product in self.__recipeMap:
                 return VisitorRequestStatus.NEED_PREPARE
         else:
-            if self.__dessertMap.get(product, 0) > 0:
+            if self._dessertMap.get(product, 0) > 0:
                 return VisitorRequestStatus.SUCCESS
         return VisitorRequestStatus.PRODUCT_MISSING
 
@@ -75,20 +75,20 @@ class CoffeeHouse:
         self.__outgoingVisitorList.append(visitor)
 
     def createMenu(self) -> None:
-        self.__menuList += list(self.__dessertMap.keys())
+        self.__menuList += list(self._dessertMap.keys())
         self.__menuList += list(self.__recipeMap.keys())
 
     def getMenu(self) -> List[Product]:
         return self.__menuList
 
     def addDessert(self, dessert: Product, amount: int) -> None:
-        self.__dessertMap[dessert] = amount
+        self._dessertMap[dessert] = amount
 
     def takeProduct(self, product: Product) -> None:
         if not product.isNeedPrepare():
-            currentAmount = self.__dessertMap.get(product, 0)
+            currentAmount = self._dessertMap.get(product, 0)
             if currentAmount > 0:
-                self.__dessertMap[product] -= 1
+                self._dessertMap[product] -= 1
 
     def addRecipe(self, product: Product, recipe: Recipe) -> None:
         self.__recipeMap[product] = recipe
@@ -97,12 +97,12 @@ class CoffeeHouse:
         return self.__recipeMap.get(product, None)
 
     def addIngredient(self, ingredient: Ingredient, amount: int) -> None:
-        self.__ingredientMap[ingredient] = amount
+        self._ingredientMap[ingredient] = amount
 
     def takeIngredient(self, ingredient: Ingredient, amount: int) -> bool:
-        currentAmount = self.__ingredientMap.get(ingredient, 0)
+        currentAmount = self._ingredientMap.get(ingredient, 0)
         if (currentAmount - amount) >= 0:
-            self.__ingredientMap[ingredient] = currentAmount - amount
+            self._ingredientMap[ingredient] = currentAmount - amount
             return True
         return False
 
