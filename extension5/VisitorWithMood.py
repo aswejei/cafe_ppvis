@@ -3,8 +3,10 @@ import random
 from typing import TYPE_CHECKING
 
 from root.Visitor import Visitor
+
 if TYPE_CHECKING:
     from root.CoffeeHouse import CoffeeHouse
+
 
 class VisitorWithMood(Visitor):
     def __init__(self, model: CoffeeHouse):
@@ -15,4 +17,4 @@ class VisitorWithMood(Visitor):
         mood = random.choice(range(10))
         if mood < 3:
             self._cashDesk.removeVisitor(self)
-
+            self._model.addRating(3)
