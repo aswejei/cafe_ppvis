@@ -1,4 +1,3 @@
-from root.Application import Application
 from root.CashDesk import CashDesk
 from root.CoffeeHouse import CoffeeHouse
 from root.Ingredient import Ingredient
@@ -10,7 +9,7 @@ from extension2.VisitorGeneratorExt2 import VisitorGeneratorExt2
 from root.Worker import Worker
 
 
-class ApplicationExt2(Application):
+class ApplicationExt2:
     @staticmethod
     def build() -> CoffeeHouse:
         model = CoffeeHouse()

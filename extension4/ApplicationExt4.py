@@ -1,5 +1,4 @@
 from extension4.CoffeeHouseWithMoreStatistics import CoffeeHouseWithMoreStatistics
-from root.Application import Application
 
 from root.CashDesk import CashDesk
 from root.Ingredient import Ingredient
@@ -10,7 +9,8 @@ from root.RecipeStep import RecipeStep
 from root.VisitorGenerator import VisitorGenerator
 from root.Worker import Worker
 
-class ApplicationExt4(Application):
+
+class ApplicationExt4:
     @staticmethod
     def build() -> CoffeeHouseWithMoreStatistics:
         model = CoffeeHouseWithMoreStatistics()

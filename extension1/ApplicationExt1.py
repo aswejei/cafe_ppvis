@@ -1,5 +1,4 @@
 from extension1.WorkerWithSpeed import WorkerWithSpeed
-from root.Application import Application
 
 from root.CashDesk import CashDesk
 from root.CoffeeHouse import CoffeeHouse
@@ -11,7 +10,7 @@ from root.RecipeStep import RecipeStep
 from root.VisitorGenerator import VisitorGenerator
 
 
-class ApplicationExt1(Application):
+class ApplicationExt1:
     @staticmethod
     def build() -> CoffeeHouse:
         model = CoffeeHouse()
