@@ -14,4 +14,4 @@ class VisitorGeneratorExt2(VisitorGenerator):
         super().__init__(model)
 
     def _generateVisitor(self) -> Visitor:
-        return VisitorWithLastChance()
+        return VisitorWithLastChance(self._model)
