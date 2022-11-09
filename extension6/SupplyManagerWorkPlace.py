@@ -17,24 +17,24 @@ class SupplyManagerWorkPlace:
         self.__ingredientInitialAmountMap = dict()
         self.__productInitialAmountMap = dict()
 
-    def addIngredientInitialAmount(self, ingredient: Ingredient, amount: int):
+    def addIngredientInitialAmount(self, ingredient: Ingredient, amount: int) -> None:
         if ingredient not in self.__ingredientInitialAmountMap:
             self.__ingredientInitialAmountMap[ingredient] = amount
 
-    def addProductInitialAmount(self, product: Product, amount: int):
+    def addProductInitialAmount(self, product: Product, amount: int) -> None:
         if product not in self.__productInitialAmountMap:
             self.__productInitialAmountMap[product] = amount
 
-    def requestIngredientRenew(self, ingredient):
+    def requestIngredientRenew(self, ingredient: Ingredient) -> None:
         for manager in self._supplyManagersList:
             if manager.getManagerState():
                 manager.renewIngredient(ingredient, self.__ingredientInitialAmountMap[ingredient])
 
-    def requestProductRenew(self, product):
+    def requestProductRenew(self, product: Product) -> None:
         for manager in self._supplyManagersList:
             if manager.getManagerState():
                 manager.renewProduct(product, self.__productInitialAmountMap[product])
 
-    def addSupplyManager(self, manager: SupplyManager):
+    def addSupplyManager(self, manager: SupplyManager) -> None:
         assert manager not in self._supplyManagersList
         self._supplyManagersList.append(manager)
