@@ -1,9 +1,10 @@
 from __future__ import annotations
 from typing import List, Dict, TYPE_CHECKING
 
-from extension6.SupplyManager import SupplyManager
-from root.Ingredient import Ingredient
-from root.Product import Product
+if TYPE_CHECKING:
+    from extension6.SupplyManager import SupplyManager
+    from root.Ingredient import Ingredient
+    from root.Product import Product
 
 
 class SupplyManagerWorkPlace:
