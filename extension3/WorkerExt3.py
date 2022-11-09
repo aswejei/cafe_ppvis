@@ -17,9 +17,9 @@ class WorkerExt3(Worker):
         if self._currentRecipe is not None:
             isFail = random.choice([True, False])
             if isFail:
-                self._prepareProductFinished(currentTime)
-                if self._cashDesk.getFirstVisitor() in None:
-                    return None
                 self._cashDesk.getFirstVisitor().failDesiredProduct(currentTime, self._currentProduct)
+                self._prepareProductFinished(currentTime)
+                if self._cashDesk.getFirstVisitor() is None:
+                    return None
                 return None
         super()._prepareProductProcess(currentTime)
