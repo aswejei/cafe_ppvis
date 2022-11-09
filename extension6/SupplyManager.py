@@ -1,8 +1,11 @@
+from __future__ import annotations
+from typing import TYPE_CHECKING
 import time
 
-from extension6.CoffeeHouseWithSupplyManager import CoffeeHouseWithSupplyManager
-from root.Ingredient import Ingredient
-from root.Product import Product
+if TYPE_CHECKING:
+    from extension6.CoffeeHouseWithSupplyManager import CoffeeHouseWithSupplyManager
+    from root.Ingredient import Ingredient
+    from root.Product import Product
 
 
 class SupplyManager:

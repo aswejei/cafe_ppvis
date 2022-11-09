@@ -1,9 +1,11 @@
-from typing import Optional
+from __future__ import annotations
+from typing import Optional, TYPE_CHECKING
 
-from extension6.SupplyManagerWorkPlace import SupplyManagerWorkPlace
 from root.CoffeeHouse import CoffeeHouse
-from root.Ingredient import Ingredient
-from root.Product import Product
+if TYPE_CHECKING:
+    from extension6.SupplyManagerWorkPlace import SupplyManagerWorkPlace
+    from root.Ingredient import Ingredient
+    from root.Product import Product
 
 
 class CoffeeHouseWithSupplyManager(CoffeeHouse):
