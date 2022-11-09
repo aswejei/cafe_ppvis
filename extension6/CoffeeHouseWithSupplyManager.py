@@ -20,3 +20,7 @@ class CoffeeHouseWithSupplyManager(CoffeeHouse):
     def addDessert(self, dessert: Product, amount: int) -> None:
         super().addDessert(dessert, amount)
         self._supplyManagerWorkPlace.addProductInitialAmount(dessert, amount)
+
+    def addSupplyManagerWorkPlace(self, supplyManagerWorkPlace: SupplyManagerWorkPlace) -> None:
+        if self._supplyManagerWorkPlace is None:
+            self._supplyManagerWorkPlace = supplyManagerWorkPlace
