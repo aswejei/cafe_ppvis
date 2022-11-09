@@ -9,14 +9,13 @@ if TYPE_CHECKING:
     from root.Product import Product
 
 
-
 class VisitorWithLastChance(Visitor):
     def __init__(self, model: CoffeeHouse):
         super().__init__(model)
 
     def failDesiredProduct(self, currentTime: int, product: Product) -> None:
         if self._successRating == 5:
-            self._successRating= 4
+            self._successRating = 4
             menu = self._model.getMenu()
             self._desiredProduct = menu[random.choice(range(len(menu)))]
         else:
