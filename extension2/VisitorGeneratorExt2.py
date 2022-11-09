@@ -3,9 +3,8 @@ from typing import TYPE_CHECKING
 
 from extension2.VisitorWithLastChance import VisitorWithLastChance
 from root.Visitor import Visitor
-
+from root.VisitorGenerator import VisitorGenerator
 if TYPE_CHECKING:
-    from root.VisitorGenerator import VisitorGenerator
     from root.CoffeeHouse import CoffeeHouse
 
 
