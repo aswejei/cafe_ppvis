@@ -6,3 +6,6 @@ class Ingredient:
 
     def getName(self) -> str:
         return self.__name
+
+    def __repr__(self):
+        return f'Ingredient {self.__hash__()} name:{self.__name}'

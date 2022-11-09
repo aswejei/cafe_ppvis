@@ -25,7 +25,7 @@ class CashDesk:
 
     def getFirstVisitor(self) -> Optional[Visitor]:
         if self.__visitorList:
-            return self.__visitorList.pop(0)
+            return self.__visitorList[0]
         return None
 
     def getVisitorList(self) -> List[Visitor]:

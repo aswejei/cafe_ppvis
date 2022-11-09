@@ -34,6 +34,8 @@ class Worker:
             if self._currentProduct.isNeedPrepare():
                 self._currentRecipe = self._model.getRecipe(self._currentProduct)
                 print(f'Time={currentTime} Worker({self.__hash__()}) start prepare product {self._currentProduct}')
+            else:
+                visitor.askDesiredProduct(currentTime)
         if self._currentRecipe is not None:
             self._prepareProductProcess(currentTime)
 

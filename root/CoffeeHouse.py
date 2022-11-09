@@ -50,7 +50,7 @@ class CoffeeHouse:
                 cash_desk.getWorker().process(self.__currentTime)
                 for visitor in cash_desk.getVisitorList():
                     visitor.process(self.__currentTime)
-        self.__currentTime += Settings.TICK_TIME
+            self.__currentTime += Settings.TICK_TIME
 
     def requestProduct(self, product: Product) -> VisitorRequestStatus:
         if product.isNeedPrepare():
@@ -59,6 +59,7 @@ class CoffeeHouse:
         else:
             if self.__dessertMap.get(product, 0) > 0:
                 return VisitorRequestStatus.SUCCESS
+        return VisitorRequestStatus.PRODUCT_MISSING
 
     def setVisitorGenerator(self, visitorGenerator: VisitorGenerator) -> None:
         self.__visitorGenerator = visitorGenerator
