@@ -25,7 +25,7 @@ class Visitor:
         menu = model.getMenu()
         self._desiredProduct = menu[random.choice(range(len(menu)))]
         cashDeskList = model.getCashDeskList()
-        self._cashDesk = cashDeskList[random.choice(range(len(cashDeskList)))]
+        self._cashDesk = random.choice(cashDeskList)
         self._cashDesk.addVisitorToQueue(self)
 
     def process(self, currentTime: int) -> None:
@@ -63,6 +63,11 @@ class Visitor:
         return self._cashDesk
 
     def __str__(self) -> str:
-        return f'Visitor({self.__hash__()})\
-         desiredProduct=[{self._desiredProduct}]\
-          queuePos={self._cashDesk.getVisitorList().index(self)}'
+        if self in self._cashDesk.getVisitorList():
+            return f'Visitor({self.__hash__()})\
+             desiredProduct=[{self._desiredProduct}]\
+              queuePos={self._cashDesk.getVisitorList().index(self)}'
+        else:
+            return f'Visitor({self.__hash__()})\
+                         desiredProduct=[{self._desiredProduct}]\
+                          queuePos: this visitor changed his mood and left the queue'
