@@ -11,8 +11,12 @@ if TYPE_CHECKING:
 class VisitorWithMood(Visitor):
     def __init__(self, model: CoffeeHouse):
         super().__init__(model)
+
+    def process(self, currentTime: int) -> None:
         if self._ifWantsToLeave():
             self._leaveQueue()
+        else:
+            super().process(currentTime)
 
     def _ifWantsToLeave(self) -> bool:
         mood = random.choice(range(10))
