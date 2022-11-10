@@ -3,6 +3,7 @@ from typing import TYPE_CHECKING
 
 from extension5.VisitorWithMood import VisitorWithMood
 from root.VisitorGenerator import VisitorGenerator
+
 if TYPE_CHECKING:
     from root.CoffeeHouse import CoffeeHouse
 
