@@ -20,21 +20,23 @@ class SupplyManager:
         self._ingredientInitialAmountMap = dict()
         self._productInitialAmountMap = dict()
 
-    def renewIngredient(self, ingredient: Ingredient) -> None:
+    def renewIngredient(self, ingredient: Ingredient, **kwargs) -> None:
         self._state = False
-        print(f'Supply manager {self.__hash__()} left to get missing ingredient(Missing ingredient is {ingredient}) ')
-        time.sleep(self._ingredientInitialAmountMap[ingredient]/10)
+        currentTime = kwargs['currentTime']
+        print(f'Time= {currentTime} Supply manager {self.__hash__()} left to get missing ingredient(Missing ingredient is {ingredient}) ')
+        kwargs['currentTime'] += self._ingredientInitialAmountMap[ingredient]/10
         self._model.addIngredient(ingredient, self._ingredientInitialAmountMap[ingredient])
-        print(f'Supply manager {self.__hash__()} successfully bought missing ingredient({ingredient}).\nMissing '
+        print(f'Time= {currentTime} Supply manager {self.__hash__()} successfully bought missing ingredient({ingredient}).\nMissing '
               f'ingredient is now renewed')
         self._state = True
 
-    def renewProduct(self, product: Product) -> None:
+    def renewProduct(self, product: Product, **kwargs) -> None:
         self._state = False
-        print(f'Supply manager {self.__hash__()} left to get missing product(Missing ingredient is {product}) ')
-        time.sleep(self._productInitialAmountMap[product]/10)
+        currentTime = kwargs['currentTime']
+        print(f'Time= {currentTime} Supply manager {self.__hash__()} left to get missing product(Missing ingredient is {product}) ')
+        kwargs['currentTime'] += self._productInitialAmountMap[product]/10
         self._model.addDessert(product, self._productInitialAmountMap[product])
-        print(f'Supply manager {self.__hash__()} successfully bought missing product({product}).\nMissing '
+        print(f'Time= {currentTime} Supply manager {self.__hash__()} successfully bought missing product({product}).\nMissing '
               f'product is now renewed')
         self._state = True
 
