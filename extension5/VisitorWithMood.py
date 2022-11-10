@@ -11,10 +11,16 @@ if TYPE_CHECKING:
 class VisitorWithMood(Visitor):
     def __init__(self, model: CoffeeHouse):
         super().__init__(model)
-        self.__ifWantsToLeave()
+        if self._ifWantsToLeave():
+            self._leaveQueue()
 
-    def __ifWantsToLeave(self) -> None:
+    def _ifWantsToLeave(self) -> bool:
         mood = random.choice(range(10))
         if mood < 3:
-            self._cashDesk.removeVisitor(self)
-            self._model.addRating(3)
+            return True
+        return False
+
+    def _leaveQueue(self) -> None:
+        self._model.addRating(3)
+        self._cashDesk.removeVisitor(self)
+
