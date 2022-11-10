@@ -41,10 +41,10 @@ class SupplyManager:
     def getManagerState(self) -> bool:
         return self._state
 
-    def addIngredientInitialAmount(self, ingredient: Ingredient, amount: int):
+    def addIngredientInitialAmount(self, ingredient: Ingredient, amount: int) -> None:
         if ingredient not in self._ingredientInitialAmountMap:
             self._ingredientInitialAmountMap[ingredient] = amount
 
-    def addProductInitialAmount(self, product: Product, amount: int):
+    def addProductInitialAmount(self, product: Product, amount: int) -> None:
         if product not in self._productInitialAmountMap:
             self._productInitialAmountMap[product] = amount
