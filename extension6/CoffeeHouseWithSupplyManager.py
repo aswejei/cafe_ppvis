@@ -3,29 +3,29 @@ from typing import Optional, TYPE_CHECKING
 
 from root.CoffeeHouse import CoffeeHouse
 if TYPE_CHECKING:
-    from extension6.SupplyManagerWorkPlace import SupplyManagerWorkPlace
+    from extension6.SupplyManager import SupplyManager
     from root.Ingredient import Ingredient
     from root.Product import Product
 
 
 class CoffeeHouseWithSupplyManager(CoffeeHouse):
-    _supplyManagerWorkPlace: Optional[SupplyManagerWorkPlace]
+    _supplyManager: Optional[SupplyManager]
 
     def __init__(self):
         super().__init__()
-        self._supplyManagerWorkPlace = None
+        self._supplyManager = None
 
     def addIngredient(self, ingredient: Ingredient, amount: int) -> None:
         super().addIngredient(ingredient, amount)
-        self._supplyManagerWorkPlace.addIngredientInitialAmount(ingredient, amount)
+        self._supplyManager.addIngredientInitialAmount(ingredient, amount)
 
     def addDessert(self, dessert: Product, amount: int) -> None:
         super().addDessert(dessert, amount)
-        self._supplyManagerWorkPlace.addProductInitialAmount(dessert, amount)
+        self._supplyManager.addProductInitialAmount(dessert, amount)
 
-    def addSupplyManagerWorkPlace(self, supplyManagerWorkPlace: SupplyManagerWorkPlace) -> None:
-        if self._supplyManagerWorkPlace is None:
-            self._supplyManagerWorkPlace = supplyManagerWorkPlace
+    def addSupplyManager(self, supplyManager: SupplyManager) -> None:
+        if self._supplyManager is None:
+            self._supplyManager = supplyManager
 
     def takeProduct(self, product: Product) -> None:
         if not product.isNeedPrepare():
@@ -33,13 +33,15 @@ class CoffeeHouseWithSupplyManager(CoffeeHouse):
             if currentAmount > 0:
                 self._dessertMap[product] -= 1
                 if self._dessertMap[product] < 1:
-                    self._supplyManagerWorkPlace.requestProductRenew(product)
+                    if self._supplyManager.getManagerState():
+                        self._supplyManager.renewProduct(product)
 
     def takeIngredient(self, ingredient: Ingredient, amount: int) -> bool:
         currentAmount = self._ingredientMap.get(ingredient, 0)
         if (currentAmount - amount) >= 0:
             self._ingredientMap[ingredient] = currentAmount - amount
             if self._ingredientMap[ingredient] < 0:
-                self._supplyManagerWorkPlace.requestIngredientRenew(ingredient)
+                if self._supplyManager.getManagerState():
+                    self._supplyManager.renewIngredient(ingredient)
             return True
         return False

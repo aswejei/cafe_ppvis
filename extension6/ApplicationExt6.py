@@ -1,6 +1,5 @@
 from extension6.CoffeeHouseWithSupplyManager import CoffeeHouseWithSupplyManager
 from extension6.SupplyManager import SupplyManager
-from extension6.SupplyManagerWorkPlace import SupplyManagerWorkPlace
 from root.CashDesk import CashDesk
 from root.Ingredient import Ingredient
 from root.KitchenMachine import KitchenMachine
@@ -26,9 +25,7 @@ class ApplicationExt6:
         cashDesk.setWorker(Worker(model, cashDesk))
         model.addCashDesk(cashDesk)
 
-        supplyManagerWorkPlace = SupplyManagerWorkPlace()
-        supplyManagerWorkPlace.addSupplyManager(SupplyManager(model))
-        model.addSupplyManagerWorkPlace(supplyManagerWorkPlace)
+        model.addSupplyManager(SupplyManager(model))
 
         model.addDessert(Product("Печенье", False), 20)
         model.addDessert(Product("Пирожное", False), 20)
