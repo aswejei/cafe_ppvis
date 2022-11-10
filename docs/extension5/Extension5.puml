@@ -1,0 +1,18 @@
+@startuml
+class ApplicationExt5 <<injector>> #yellow {
+{static}+ CoffeeHouse build()
+}
+class Visitor
+class VisitorWithMood #yellow {
+# bool ifWantsToLeave()
+# void leaveQueue()
+}
+VisitorWithMood --|> Visitor
+class VisitorGenerator
+class VisitorWithMoodGenerator #yellow {
+# VisitorWithMood generateVisitor()
+}
+VisitorGenerator <|-- VisitorWithMoodGenerator
+VisitorWithMoodGenerator  ..> VisitorWithMood : <<create>>
+ApplicationExt5  ..> VisitorWithMoodGenerator : <<create>>
+@enduml

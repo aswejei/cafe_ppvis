@@ -1,0 +1,44 @@
+@startuml
+class ApplicationExt6 <<injector>> #yellow {
+{static}+ CoffeeHouseWithSupplyManager build()
+}
+ApplicationExt6 ..> Product: <<create>>
+ApplicationExt6 ..> Ingredient: <<create>>
+ApplicationExt6 ..> SupplyManager: <<create>>
+class CofeeHouse
+class Ingredient
+class Product
+
+class CoffeeHouseWithSupplyManager #yellow {
+    # SupplyManager supplyManager
+
+    + void addIngredient(Ingredient ingredient, int amount)
+}
+CoffeeHouseWithSupplyManager --|> CofeeHouse
+
+class SupplyManager #yellow {
+    # bool state
+
+    + void renewIngredient(ingredient: Ingredient)
+    + void renewProduct(product: Product)
+    + bool getManagerState()
+    + void addProductInitialAmount(product: Product, amount: int)
+    + void addIngredientInitialAmount(ingredient: Ingredient, amount: int)
+}
+SupplyManager "1" o-- "n" Ingredient
+SupplyManager "1" --> "n, #ingredientInitialAmountMap" Ingredient
+(SupplyManager, Ingredient) .. ingredientInitialAmountMap
+class ingredientInitialAmountMap {
+    int amount
+}
+SupplyManager "1" --> "n, #productInitialAmountMap" Product
+(SupplyManager, Product) .. productInitialAmountMap
+class productInitialAmountMap {
+    int amount
+}
+
+CoffeeHouseWithSupplyManager "1, # model" <-- "1" SupplyManager
+CoffeeHouseWithSupplyManager "1" --> "1, # supplyManager" SupplyManager
+CoffeeHouseWithSupplyManager "1" o-- "1" SupplyManager
+
+@enduml
