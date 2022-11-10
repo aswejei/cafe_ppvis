@@ -21,7 +21,7 @@ class CoffeeHouse:
     __menuList: List[Product]
     __outgoingVisitorList: List[Visitor]
     _ingredientMap: Dict[Ingredient, int]
-    __currentTime: int
+    _currentTime: int
     __ratingSum: int
     __ratingAmount: int
 
@@ -33,24 +33,24 @@ class CoffeeHouse:
         self.__menuList = list()
         self.__outgoingVisitorList = list()
         self._ingredientMap = dict()
-        self.__currentTime = 0
+        self._currentTime = 0
         self.__ratingSum = 0
         self.__ratingAmount = 0
 
     def run(self) -> None:
         self.createMenu()
-        while self.__currentTime < Settings.CLOSING_TIME:
+        while self._currentTime < Settings.CLOSING_TIME:
             for visitor in self.__outgoingVisitorList:
                 visitor.getCashDesk().removeVisitor(visitor)
             self.__outgoingVisitorList.clear()
 
             assert self.__visitorGenerator is not None
-            self.__visitorGenerator.process(self.__currentTime)
+            self.__visitorGenerator.process(self._currentTime)
             for cash_desk in self.__cashDeskList:
-                cash_desk.getWorker().process(self.__currentTime)
+                cash_desk.getWorker().process(self._currentTime)
                 for visitor in cash_desk.getVisitorList():
-                    visitor.process(self.__currentTime)
-            self.__currentTime += Settings.TICK_TIME
+                    visitor.process(self._currentTime)
+            self._currentTime += Settings.TICK_TIME
 
     def requestProduct(self, product: Product) -> VisitorRequestStatus:
         if product.isNeedPrepare():

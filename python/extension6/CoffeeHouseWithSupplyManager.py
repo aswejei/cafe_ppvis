@@ -2,6 +2,7 @@ from __future__ import annotations
 from typing import Optional, TYPE_CHECKING
 
 from python.root.CoffeeHouse import CoffeeHouse
+
 if TYPE_CHECKING:
     from python.extension6.SupplyManager import SupplyManager
     from python.root.Ingredient import Ingredient
@@ -34,7 +35,8 @@ class CoffeeHouseWithSupplyManager(CoffeeHouse):
                 self._dessertMap[product] -= 1
                 if self._dessertMap[product] < 1:
                     if self._supplyManager.getManagerState():
-                        self._supplyManager.renewProduct(product, self.__currentTime)
+                        time = self._supplyManager.renewProduct(product, self._currentTime)
+                        self._currentTime += time
 
     def takeIngredient(self, ingredient: Ingredient, amount: int) -> bool:
         currentAmount = self._ingredientMap.get(ingredient, 0)
@@ -42,6 +44,7 @@ class CoffeeHouseWithSupplyManager(CoffeeHouse):
             self._ingredientMap[ingredient] = currentAmount - amount
             if self._ingredientMap[ingredient] < 0:
                 if self._supplyManager.getManagerState():
-                    self._supplyManager.renewIngredient(ingredient, currentTime=self.__currentTime)
+                    time = self._supplyManager.renewIngredient(ingredient, self._currentTime)
+                    self._currentTime += time
             return True
         return False
