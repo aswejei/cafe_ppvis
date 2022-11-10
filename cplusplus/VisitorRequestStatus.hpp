@@ -1,0 +1,11 @@
+#ifndef VISITOR_REQUEST_STATUS_HPP
+#define VISITOR_REQUEST_STATUS_HPP
+
+enum VisitorRequestStatus
+{
+	SUCCESS,
+	NEED_PREPARE,
+	PRODUCT_MISSING
+};
+
+#endif
