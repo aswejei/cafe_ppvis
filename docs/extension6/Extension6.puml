@@ -28,12 +28,12 @@ class SupplyManager #yellow {
 SupplyManager "1" o-- "n" Ingredient
 SupplyManager "1" --> "n, #ingredientInitialAmountMap" Ingredient
 (SupplyManager, Ingredient) .. ingredientInitialAmountMap
-class ingredientInitialAmountMap {
+class ingredientInitialAmountMap #yellow {
     int amount
 }
 SupplyManager "1" --> "n, #productInitialAmountMap" Product
 (SupplyManager, Product) .. productInitialAmountMap
-class productInitialAmountMap {
+class productInitialAmountMap #yellow {
     int amount
 }
 
