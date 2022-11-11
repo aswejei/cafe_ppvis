@@ -1,5 +1,5 @@
 from __future__ import annotations
-from typing import TYPE_CHECKING, Dict
+from typing import TYPE_CHECKING, Dict, Union, List
 import time
 
 if TYPE_CHECKING:
@@ -13,32 +13,44 @@ class SupplyManager:
     _state: bool
     _ingredientInitialAmountMap: Dict[Ingredient, int]
     _productInitialAmountMap: Dict[Product, int]
+    _buyList: List[Union[Ingredient, Product]]
+    _comeBackTime: Union[int, None]
 
     def __init__(self, model: CoffeeHouseWithSupplyManager):
         self._model = model
-        self._state = True
         self._ingredientInitialAmountMap = dict()
         self._productInitialAmountMap = dict()
+        self._buyList = list()
+        self._comeBackTime = None
 
-    def renewIngredient(self, ingredient: Ingredient, currentTime: int) -> None:
-        self._state = False
-        print(f'Time= {currentTime} Supply manager {self.__hash__()} left to get missing ingredient(Missing ingredient is {ingredient}) ')
-        currentTime += self._ingredientInitialAmountMap[ingredient]/10
-        self._model.addIngredient(ingredient, self._ingredientInitialAmountMap[ingredient])
-        print(f'Time= {currentTime} Supply manager {self.__hash__()} successfully bought missing ingredient({ingredient}).\nMissing '
-              f'ingredient is now renewed')
-        self._state = True
-        return currentTime
+    def process(self, buyList: List[Union[Ingredient, Product]], currentTime: int) -> None:
+        if self._comeBackTime is None:
+            if len(buyList) > 0:
+                print(f'There is a lack of those products:{buyList}')
+                self._buyList = buyList
+                self._renewSupplyLeave(currentTime)
+        else:
+            if currentTime >= self._comeBackTime:
+                self._renewSupplyFinish()
 
-    def renewProduct(self, product: Product, currentTime: int) -> None:
-        self._state = False
-        print(f'Time= {currentTime} Supply manager {self.__hash__()} left to get missing product(Missing ingredient is {product}) ')
-        currentTime += self._productInitialAmountMap[product]/10
-        self._model.addDessert(product, self._productInitialAmountMap[product])
-        print(f'Time= {currentTime} Supply manager {self.__hash__()} successfully bought missing product({product}).\nMissing '
-              f'product is now renewed')
-        self._state = True
-        return currentTime
+    def _renewSupplyLeave(self, currentTime: int) -> None:
+        self._comeBackTime = currentTime
+        print(f'Supply Manager was informed about lack of products')
+        for elem in self._buyList:
+            if elem is Ingredient:
+                self._comeBackTime += self._ingredientInitialAmountMap[elem] / 10
+            elif elem is Product:
+                self._comeBackTime += self._productInitialAmountMap[elem] / 10
+        print(f'Supply Manager left for {self._comeBackTime - currentTime} to renew products')
+
+    def _renewSupplyFinish(self) -> None:
+        for elem in self._buyList:
+            if elem is Ingredient:
+                self._model.addIngredient(elem, self._ingredientInitialAmountMap[elem])
+            elif elem is Product:
+                self._model.addDessert(elem, self._productInitialAmountMap[elem])
+        print(f'All the products requested previously were restored')
+        self._comeBackTime = None
 
     def getManagerState(self) -> bool:
         return self._state
