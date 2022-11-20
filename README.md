@@ -17,14 +17,14 @@
 - Как <клиент кофейни>, я хочу <иметь возможность отслеживать время приготовления напитка>, чтобы <знать сколько времени я уже жду>
 - Как <клиент кофейни>, я хочу <иметь возможность поставить оценку кофейне>, чтобы <выразить свои впечатления и повлиять на качество обслуживания>
 
-## Базовая диаграмма классов
-![Alt text](https://github.com/aswejei/cafe_ppvis/blob/master/docs/Class%20Diagrams/base.png "Базовая диаграмма классов")
-
 ## Entity-Relationship диаграмма
 ![Alt text](https://github.com/aswejei/cafe_ppvis/blob/master/docs/ER_cafe.png "Entity-Telationship диаграмма")
 
 ## Buisness Process Modelling Notation 2 диаграмма
 ![Alt text](https://github.com/aswejei/cafe_ppvis/blob/master/docs/cafe_bpmn.png "Buisness Process Modelling Notation 2 диаграмма")
+
+## Базовая диаграмма классов
+![Alt text](https://github.com/aswejei/cafe_ppvis/blob/master/docs/Class%20Diagrams/base.png "Базовая диаграмма классов")
 
 ## Диаграмма классов расширения №1
 - У каждого работника есть персональная характеристика скорость, которая влияет на время выполнения шага рецепта. Если характеристика > 1, то работник делает все быстрее, иначе медленнее
