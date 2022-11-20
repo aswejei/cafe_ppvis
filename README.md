@@ -17,6 +17,9 @@
 - Как <клиент кофейни>, я хочу <иметь возможность отслеживать время приготовления напитка>, чтобы <знать сколько времени я уже жду>
 - Как <клиент кофейни>, я хочу <иметь возможность поставить оценку кофейне>, чтобы <выразить свои впечатления и повлиять на качество обслуживания>
 
+## Use-Case диаграмма
+![Alt text](https://github.com/aswejei/cafe_ppvis/blob/master/docs/use_case_cafe.png "Use-Case диаграмма")
+
 ## Entity-Relationship диаграмма
 ![Alt text](https://github.com/aswejei/cafe_ppvis/blob/master/docs/ER_cafe.png "Entity-Telationship диаграмма")
 
