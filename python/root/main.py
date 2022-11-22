@@ -1,4 +1,4 @@
-from python.root.Application import Application
+from Application import Application
 
 if __name__ == '__main__':
     model = Application.build()

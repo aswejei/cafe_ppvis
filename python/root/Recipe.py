@@ -2,7 +2,7 @@ from __future__ import annotations
 from typing import List, TYPE_CHECKING
 
 if TYPE_CHECKING:
-    from python.root.RecipeStep import RecipeStep
+    from RecipeStep import RecipeStep
 
 
 class Recipe:

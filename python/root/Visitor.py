@@ -2,13 +2,13 @@ from __future__ import annotations
 from typing import TYPE_CHECKING
 import random
 
-from python.root.Settings import Settings
-from python.root.VisitorRequestStatus import VisitorRequestStatus
+from Settings import Settings
+from VisitorRequestStatus import VisitorRequestStatus
 
 if TYPE_CHECKING:
-    from python.root.Product import Product
-    from python.root.CoffeeHouse import CoffeeHouse
-    from python.root.CashDesk import CashDesk
+    from Product import Product
+    from CoffeeHouse import CoffeeHouse
+    from CashDesk import CashDesk
 
 
 class Visitor:

@@ -2,8 +2,8 @@ from __future__ import annotations
 from typing import Optional, TYPE_CHECKING
 
 if TYPE_CHECKING:
-    from python.root.KitchenMachine import KitchenMachine
-    from python.root.Ingredient import Ingredient
+    from KitchenMachine import KitchenMachine
+    from Ingredient import Ingredient
 
 
 class RecipeStep:

@@ -1,12 +1,12 @@
-from python.root.CashDesk import CashDesk
-from python.root.CoffeeHouse import CoffeeHouse
-from python.root.Ingredient import Ingredient
-from python.root.KitchenMachine import KitchenMachine
-from python.root.Product import Product
-from python.root.Recipe import Recipe
-from python.root.RecipeStep import RecipeStep
-from python.root.VisitorGenerator import VisitorGenerator
-from python.root.Worker import Worker
+from CashDesk import CashDesk
+from CoffeeHouse import CoffeeHouse
+from Ingredient import Ingredient
+from KitchenMachine import KitchenMachine
+from Product import Product
+from Recipe import Recipe
+from RecipeStep import RecipeStep
+from VisitorGenerator import VisitorGenerator
+from  Worker import Worker
 
 
 class Application:

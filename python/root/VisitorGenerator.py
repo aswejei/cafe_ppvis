@@ -1,10 +1,10 @@
 from __future__ import annotations
 from typing import TYPE_CHECKING
-from python.root.Settings import Settings
-from python.root.Visitor import Visitor
+from Settings import Settings
+from Visitor import Visitor
 
 if TYPE_CHECKING:
-    from python.root.CoffeeHouse import CoffeeHouse
+    from CoffeeHouse import CoffeeHouse
 
 
 class VisitorGenerator:

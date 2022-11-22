@@ -2,15 +2,15 @@ from __future__ import annotations
 from typing import Dict, List, Optional, TYPE_CHECKING
 
 if TYPE_CHECKING:
-    from python.root.CashDesk import CashDesk
-    from python.root.Ingredient import Ingredient
-    from python.root.Product import Product
-    from python.root.Recipe import Recipe
-    from python.root.Visitor import Visitor
-    from python.root.VisitorGenerator import VisitorGenerator
+    from CashDesk import CashDesk
+    from Ingredient import Ingredient
+    from Product import Product
+    from Recipe import Recipe
+    from Visitor import Visitor
+    from VisitorGenerator import VisitorGenerator
 
-from python.root.VisitorRequestStatus import VisitorRequestStatus
-from python.root.Settings import Settings
+from VisitorRequestStatus import VisitorRequestStatus
+from Settings import Settings
 
 
 class CoffeeHouse:

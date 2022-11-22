@@ -2,11 +2,11 @@ from __future__ import annotations
 from typing import Optional, TYPE_CHECKING
 
 if TYPE_CHECKING:
-    from python.root.CashDesk import CashDesk
-    from python.root.CoffeeHouse import CoffeeHouse
-    from python.root.Product import Product
-    from python.root.Recipe import Recipe
-    from python.root.RecipeStep import RecipeStep
+    from CashDesk import CashDesk
+    from CoffeeHouse import CoffeeHouse
+    from Product import Product
+    from Recipe import Recipe
+    from RecipeStep import RecipeStep
 
 
 class Worker:
