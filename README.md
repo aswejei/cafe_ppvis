@@ -26,6 +26,9 @@
 ## Buisness Process Modelling Notation 2 диаграмма
 ![Alt text](https://github.com/aswejei/cafe_ppvis/blob/master/docs/cafe_bpmn.png "Buisness Process Modelling Notation 2 диаграмма")
 
+## Sequence диаграмма
+![Alt text](https://github.com/aswejei/cafe_ppvis/blob/master/docs/Sequence_diagram.png "Диаграмма последовательности")
+
 ## Базовая диаграмма классов
 ![Alt text](https://github.com/aswejei/cafe_ppvis/blob/master/docs/Class%20Diagrams/base.png "Базовая диаграмма классов")
 
